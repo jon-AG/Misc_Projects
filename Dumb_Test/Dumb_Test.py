@@ -11,7 +11,6 @@ class run_Game():
         self.create_Main_Screen()
         self.play_Music()
 
-
         self.delay_count = 0 
         self.GIF_count = 0
         while True:     
@@ -44,7 +43,7 @@ class run_Game():
 
     def change_BG(self):
         #Keep changing the background to give the user epilepsy
-        delay_Multiplier = 100
+        delay_Multiplier = 85
         if self.delay_count%delay_Multiplier == 0:
             #Get center of screen
             screen_Rect = self.screen.get_rect()
@@ -55,7 +54,7 @@ class run_Game():
             #Load title images
             title_Image = p.image.load(os.path.join(self.pic_Path, 'title_Support.png'))      
             
-            glasses_GIF_Path = os.path.join(self.GIF_Path, 'Egg')
+            glasses_GIF_Path = os.path.join(self.GIF_Path, 'Politician')
             GIF_Files = os.listdir(glasses_GIF_Path)
             if self.GIF_count == len(GIF_Files):
                 self.GIF_count = 0
