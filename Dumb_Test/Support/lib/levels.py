@@ -22,6 +22,7 @@ class title_Screen():
 
             p.display.update() 
             p.display.flip()
+            p.event.pump()
 
     def change_BG(self):
         #Keep changing the background to give the user epilepsy
@@ -31,7 +32,6 @@ class title_Screen():
             screen_Rect = self.screen.get_rect()
             screen_Center = screen_Rect.center
             [center_X, center_Y] = screen_Center
-
 
             #Load title images
             title_Image = p.image.load(os.path.join(self.config_Paths.pic_Path, 'title_Support.png'))      
