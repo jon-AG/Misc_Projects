@@ -3,6 +3,11 @@ import pygame as p
 import random as r
 import sys
 
+sys.path.append(os.path.join(os.getcwd(), 'Support'))
+from build import toolbox
+
+
+
 class title_Screen():
     def __init__(self, screen, config_Paths, screen_X, screen_Y):
         self.screen = screen
@@ -11,32 +16,38 @@ class title_Screen():
         self.screen_Y = screen_Y
         self.delay_count = 0 
         self.GIF_count = 0
+
+        #Get center of screen
+        center_Coordinates = toolbox.get_Center(self.screen)
+        [self.center_X, self.center_Y] = [center_Coordinates.x, center_Coordinates.y]
+
+        self.start_Btn = toolbox.button((0,255,0), self.center_X, self.center_Y, 100, 100, 'test')
         while True:     
              
             self.change_BG()
+            self.start_Btn.draw(self.screen)
             for event in p.event.get():
+                pos = p.mouse.get_pos()
                 if event.type == p.QUIT:
                     sys.exit()
+                if event.type == p.MOUSEBUTTONDOWN:
+                    if self.start_Btn.isOver(pos):
+                        print('it worked')
             if self.delay_count == 1000:
                 self.delay_count = 0
 
             p.display.update() 
             p.display.flip()
-            p.event.pump()
 
     def change_BG(self):
         #Keep changing the background to give the user epilepsy
         delay_Multiplier = 85
         if self.delay_count%delay_Multiplier == 0:
-            #Get center of screen
-            screen_Rect = self.screen.get_rect()
-            screen_Center = screen_Rect.center
-            [center_X, center_Y] = screen_Center
 
             #Load title images
             title_Image = p.image.load(os.path.join(self.config_Paths.pic_Path, 'title_Support.png'))      
             
-            glasses_GIF_Path = os.path.join(self.config_Paths.GIF_Path, 'Politician')
+            glasses_GIF_Path = os.path.join(self.config_Paths.GIF_Path, 'Glasses')
             GIF_Files = os.listdir(glasses_GIF_Path)
             if self.GIF_count == len(GIF_Files):
                 self.GIF_count = 0
@@ -51,7 +62,7 @@ class title_Screen():
             #Change title color and coordinates
             color_Title = title_Image.convert_alpha()            
             
-            [min_X, max_X, min_Y, max_Y] = [-center_X,center_X*2,-center_Y,center_Y*2]
+            [min_X, max_X, min_Y, max_Y] = [-self.center_X,self.center_X*2,-self.center_Y,self.center_Y*2]
             [title_X, title_Y] = self.random_Coordinates(min_X, max_X, min_Y, max_Y)
             [title_X2, title_Y2] = self.random_Coordinates(min_X, max_X, min_Y, max_Y)
             [title_X3, title_Y3] = self.random_Coordinates(min_X, max_X, min_Y, max_Y)
