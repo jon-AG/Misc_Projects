@@ -10,7 +10,7 @@ class run_Game():
         self.create_Main_Screen()
         config.play_Music(self.config_Paths.music_Path, 'opening_Theme.mp3')
 
-        levels.title_Screen(self.screen, self.config_Paths, self.screen_X, self.screen_Y)
+        levels.title_Screen(self.screen, self.config_Paths, self.screen_X, self.screen_Y, self.config_Paths)
         
     def create_Main_Screen(self):
         self.screen_X = 800

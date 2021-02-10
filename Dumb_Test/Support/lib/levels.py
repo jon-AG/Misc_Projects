@@ -5,11 +5,10 @@ import sys
 
 sys.path.append(os.path.join(os.getcwd(), 'Support'))
 from build import toolbox
-
-
+from .config import play_Music
 
 class title_Screen():
-    def __init__(self, screen, config_Paths, screen_X, screen_Y):
+    def __init__(self, screen, config_Paths, screen_X, screen_Y, paths):
         self.screen = screen
         self.config_Paths = config_Paths
         self.screen_X = screen_X
@@ -21,7 +20,8 @@ class title_Screen():
         center_Coordinates = toolbox.get_Center(self.screen)
         [self.center_X, self.center_Y] = [center_Coordinates.x, center_Coordinates.y]
 
-        self.start_Btn = toolbox.button((0,255,0), self.center_X, self.center_Y, 100, 100, 'test')
+        self.start_Btn = toolbox.button((0,255,0), -250, -200, 220, 80, 95, 'START')
+        m_flag = 0
         while True:     
              
             self.change_BG()
@@ -32,7 +32,8 @@ class title_Screen():
                     sys.exit()
                 if event.type == p.MOUSEBUTTONDOWN:
                     if self.start_Btn.isOver(pos):
-                        print('it worked')
+                        print("Put Level 1 Here")
+
             if self.delay_count == 1000:
                 self.delay_count = 0
 
