@@ -74,7 +74,7 @@ class main():
     def set_Spot(self, curr, idx): 
         self.buttons[2][2]['text'] = 0  
         if curr == (2,2):
-            user_input = '1029384756'
+            user_input = input('What was the path: ')
             z= 0x31303239333834373536
             answer = binascii.unhexlify('{:x}'.format(z))
             answer = answer.decode('ascii')
