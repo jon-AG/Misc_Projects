@@ -72,14 +72,10 @@ class main():
     def set_Spot(self, curr, idx): 
         self.buttons[2][2]['text'] = 0  
         if curr == (2,2):
-            a = ('1101001 100000 1101100 1101001 1101011 1100101 100000 1110100 1100001 1100011 1101111 1110011')
-            binary_values = a.split()
-            ascii_string = ""
-            for binary_value in binary_values:
-                an_integer = int(binary_value, 2)
-                ascii_character = chr(an_integer)
-                ascii_string += ascii_character
-            print(ascii_string)
+            user_input = 253214664
+            if user_input == 253214664:
+                print('You Win!!')
+            print(253214664)
             self.buttons[2][2]['text'] = 'You Win!!'
 
         for x in range(len(self.buttons)):
