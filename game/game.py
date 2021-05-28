@@ -1,3 +1,4 @@
+import binascii
 from functools import partial
 import tkinter as tk
 
@@ -50,6 +51,7 @@ class main():
         for x in range(len(self.buttons)):
             for y in range(len(self.buttons[x])):
                 self.buttons[x][y].grid(row=x,column=y)
+
     def create_Paths(self):
         for x in range(len(self.buttons)):
             row_paths = []
@@ -72,10 +74,12 @@ class main():
     def set_Spot(self, curr, idx): 
         self.buttons[2][2]['text'] = 0  
         if curr == (2,2):
-            user_input = 253214664
-            if user_input == 253214664:
+            user_input = '1029384756'
+            z= 0x31303239333834373536
+            answer = binascii.unhexlify('{:x}'.format(z))
+            answer = answer.decode('ascii')
+            if user_input == answer:
                 print('You Win!!')
-            print(253214664)
             self.buttons[2][2]['text'] = 'You Win!!'
 
         for x in range(len(self.buttons)):
