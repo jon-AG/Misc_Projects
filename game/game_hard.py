@@ -76,7 +76,7 @@ class main():
     def set_Spot(self, curr, idx): 
         self.buttons[self.winx][self.winy]['text'] = 0  
         if curr == (self.winx,self.winy):
-            print('You Win!!!')
+            print('The answer is: dogs are cool')
             self.buttons[self.winx][self.winy]['text'] = 'You Win!!'
 
         for x in range(len(self.buttons)):
